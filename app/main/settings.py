@@ -1,4 +1,5 @@
 import django_heroku
+import dj_database_url
 """
 Django settings for main project.
 
@@ -26,7 +27,7 @@ SECRET_KEY = '8l&3w&3^=gw2f+8+1ol^vfx0-cz!qnc(*fx09f&&jtdppouh^='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [‘0.0.0.0’, ‘localhost’, ‘stark-escarpment-63219.herokuapp.com’]
+ALLOWED_HOSTS = []
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS' : 'rest_framework.pagination.PageNumberPagination',
@@ -127,3 +128,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 django_heroku.settings(locals())
+db_from_env = dj_database_url.config()
+DATABASES['default'].update[db_from_env]
